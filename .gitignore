@@ -1,0 +1,22 @@
+# Environment files (keep private keys secure)
+.env*
+!.env.radius
+!.env.base.sepolia
+!.env.anvil
+
+# Deployment state files
+*state.json
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
