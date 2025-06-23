@@ -63,6 +63,8 @@ npm run setup
 
 ### 2. Configure Your Network
 
+The switch scripts copy your network-specific configuration to `.env` which is used by the deployment tool.
+
 **For Anvil (Local Development):**
 
 ```bash
@@ -72,7 +74,7 @@ npm run switch-to-anvil  # Ready to use immediately
 **For Radius Testnet:**
 
 ```bash
-# Copy and configure
+# Copy and configure network-specific file
 cp .env.radius-testnet.example .env.radius-testnet
 
 # Edit .env.radius-testnet with:
@@ -80,19 +82,21 @@ cp .env.radius-testnet.example .env.radius-testnet
 # - Your private key and wallet address
 # - Get testnet ETH from the faucet
 
+# Switch to use this configuration (copies .env.radius-testnet → .env)
 npm run switch-to-radius-testnet
 ```
 
 **For Base Sepolia:**
 
 ```bash
-# Copy and configure
+# Copy and configure network-specific file
 cp .env.base-sepolia.example .env.base-sepolia
 
 # Edit .env.base-sepolia with:
 # - Your private key and wallet address
 # - Get testnet ETH from https://faucet.quicknode.com/base/sepolia
 
+# Switch to use this configuration (copies .env.base-sepolia → .env)
 npm run switch-to-base-sepolia
 ```
 

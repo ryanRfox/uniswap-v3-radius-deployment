@@ -15,19 +15,19 @@ function detectNetwork() {
   if (envContent.includes('Anvil Local')) {
     return {
       name: 'Anvil',
-      stateFile: 'anvil-uniswap-v3-state.json',
+      stateFile: 'uniswap-v3-deployment-state.json',
       envFile: '.env.anvil'
     };
   } else if (envContent.includes('Base Sepolia')) {
     return {
       name: 'Base Sepolia',
-      stateFile: 'base-sepolia-uniswap-v3-state.json',
+      stateFile: 'uniswap-v3-deployment-state.json',
       envFile: '.env.base-sepolia'
     };
   } else if (envContent.includes('Radius')) {
     return {
       name: 'Radius Testnet',
-      stateFile: 'radius-uniswap-v3-state.json',
+      stateFile: 'uniswap-v3-deployment-state.json',
       envFile: '.env.radius-testnet'
     };
   } else {
