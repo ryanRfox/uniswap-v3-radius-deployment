@@ -1,5 +1,6 @@
 # Private configurations and deployment data
 private/
+deployments/
 .env
 .env.*
 !.env.anvil
