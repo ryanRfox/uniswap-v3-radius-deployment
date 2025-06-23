@@ -22,30 +22,28 @@ npm run update-env
 
 ## Network Configuration
 
-| Network | Command | Setup Instructions |
-|---------|---------|-------------------|
-| **Anvil** | `npm run switch-to-anvil` | Ready to use (no setup needed) |
+| Network            | Command                            | Setup Instructions                                   |
+| ------------------ | ---------------------------------- | ---------------------------------------------------- |
+| **Anvil**          | `npm run switch-to-anvil`          | Ready to use (no setup needed)                       |
 | **Radius Testnet** | `npm run switch-to-radius-testnet` | `cp .env.radius-testnet.example .env.radius-testnet` |
-| **Radius Staging** | `npm run switch-to-radius-staging` | `cp .env.radius-staging.example .env.radius-staging` |
-| **Base Sepolia** | `npm run switch-to-base-sepolia` | `cp .env.base-sepolia.example .env.base-sepolia` |
+| **Base Sepolia**   | `npm run switch-to-base-sepolia`   | `cp .env.base-sepolia.example .env.base-sepolia`     |
 
 ### Network Details
 
 **🔧 Anvil** - Fast local development
+
 - Instant transactions, unlimited test ETH
 - Perfect for testing and development
 
-**🌐 Base Sepolia** - Ethereum L2 testnet  
+**🌐 Base Sepolia** - Ethereum L2 testnet
+
 - Standard Ethereum behavior
 - Get ETH: [Base Sepolia Faucet](https://faucet.quicknode.com/base/sepolia)
 
 **🚀 Radius Testnet** - Radius network deployment
+
 - Get API key: [Radius Dashboard](https://testnet.tryradi.us/dashboard)
 - Get ETH: [Radius Faucet](https://testnet.tryradi.us/dashboard/faucet)
-
-**🧪 Radius Staging** - Radius staging environment
-- Contact Radius team for access
-- Get ETH: [Staging Faucet](https://stg.tryradi.us/dashboard/faucet)
 
 ## System Requirements
 
@@ -57,6 +55,7 @@ npm run update-env
 ## Setup Instructions
 
 ### 1. Install Dependencies
+
 ```bash
 npm install
 npm run setup
@@ -65,17 +64,19 @@ npm run setup
 ### 2. Configure Your Network
 
 **For Anvil (Local Development):**
+
 ```bash
 npm run switch-to-anvil  # Ready to use immediately
 ```
 
 **For Radius Testnet:**
+
 ```bash
 # Copy and configure
 cp .env.radius-testnet.example .env.radius-testnet
 
 # Edit .env.radius-testnet with:
-# - Your API key from https://testnet.tryradi.us/dashboard  
+# - Your API key from https://testnet.tryradi.us/dashboard
 # - Your private key and wallet address
 # - Get testnet ETH from the faucet
 
@@ -83,6 +84,7 @@ npm run switch-to-radius-testnet
 ```
 
 **For Base Sepolia:**
+
 ```bash
 # Copy and configure
 cp .env.base-sepolia.example .env.base-sepolia
@@ -104,24 +106,23 @@ npm run update-env       # Update .env with deployed addresses
 
 ## Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run setup` | Install Uniswap deployment tool |
-| `npm run switch-to-anvil` | Switch to Anvil local network |
-| `npm run switch-to-radius-testnet` | Switch to Radius testnet |
-| `npm run switch-to-radius-staging` | Switch to Radius staging |
-| `npm run switch-to-base-sepolia` | Switch to Base Sepolia |
-| `npm run check-balance` | Check wallet balance |
-| `npm run deploy` | Deploy all contracts |
-| `npm run update-env` | Update environment with deployed addresses |
-| `npm run verify-deployment` | Test deployed contracts |
+| Script                             | Description                                |
+| ---------------------------------- | ------------------------------------------ |
+| `npm run setup`                    | Install Uniswap deployment tool            |
+| `npm run switch-to-anvil`          | Switch to Anvil local network              |
+| `npm run switch-to-radius-testnet` | Switch to Radius testnet                   |
+| `npm run switch-to-base-sepolia`   | Switch to Base Sepolia                     |
+| `npm run check-balance`            | Check wallet balance                       |
+| `npm run deploy`                   | Deploy all contracts                       |
+| `npm run update-env`               | Update environment with deployed addresses |
+| `npm run verify-deployment`        | Test deployed contracts                    |
 
 ## Deployed Contracts
 
 After successful deployment, you'll have all 14 Uniswap V3 contracts:
 
 - **UniswapV3Factory** - Core factory contract
-- **SwapRouter02** - Universal router for swaps  
+- **SwapRouter02** - Universal router for swaps
 - **NonfungiblePositionManager** - NFT position management
 - **QuoterV2** - Price quotation
 - **And 10 additional supporting contracts**
@@ -129,20 +130,24 @@ After successful deployment, you'll have all 14 Uniswap V3 contracts:
 ## Troubleshooting
 
 **"Insufficient funds"**
+
 - Get testnet ETH from the appropriate faucet
 - Need ~0.5 ETH for full deployment
 
-**"Network connection failed"**  
+**"Network connection failed"**
+
 - Check your API keys and RPC URLs
 - Verify network configuration in your `.env.*` file
 
 **"Module not found"**
+
 - Run `npm run setup` to reinstall dependencies
 - Ensure Node.js 18.x or 20.x
 
 ## Contributing
 
 This project uses standard environment file conventions:
+
 - `.env.*.example` files are public templates
 - Copy to `.env.*` and fill in your credentials
 - Never commit real credentials to the repository

@@ -67,9 +67,6 @@ else
         echo "4️⃣  Test for nonce issues (Radius specific):"
         echo "    npm run test-nonce"
         echo ""
-        echo "5️⃣  Try Radius Staging (if available):"
-        echo "    npm run switch-to-radius-staging"
-        echo ""
     fi
     echo "💡 Check the error messages above for specific issues"
     echo ""

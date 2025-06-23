@@ -46,7 +46,6 @@ function main() {
   console.log('    npm run switch-to-anvil          # Local development');
   console.log('    npm run switch-to-base-sepolia   # Base Sepolia testnet');
       console.log('    npm run switch-to-radius-testnet # Radius testnet');
-  console.log('    npm run switch-to-radius-staging # Radius staging (if available)');
   console.log('');
   console.log('💡 RECOMMENDED: Start with Anvil for fast local testing:');
   console.log('    npm run switch-to-anvil');

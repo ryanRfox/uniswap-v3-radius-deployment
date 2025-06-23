@@ -24,12 +24,6 @@ function detectNetwork() {
       stateFile: 'base-sepolia-uniswap-v3-state.json',
       envFile: '.env.base-sepolia'
     };
-  } else if (envContent.includes('Radius Staging')) {
-    return {
-      name: 'Radius Staging',
-      stateFile: 'radius-staging-uniswap-v3-state.json',
-      envFile: '.env.radius-staging'
-    };
   } else if (envContent.includes('Radius')) {
     return {
       name: 'Radius Testnet',

@@ -9,18 +9,15 @@
   "scripts": {
     "setup": "node setup.js",
     "switch-to-radius-testnet": "./switch-to-radius-testnet.sh",
-    "switch-to-radius-staging": "./switch-to-radius-staging.sh",
     "switch-to-base-sepolia": "./switch-to-base-sepolia.sh",
     "switch-to-anvil": "./switch-to-anvil.sh",
     "start-anvil": "anvil",
     "setup-anvil": "npm run switch-to-anvil && cd uniswap-deploy-v3 && rm -rf node_modules package-lock.json && npm install",
     "check-balance": "./check-balance.sh",
     "deploy": "./deploy-wrapper.sh 'Radius' 'cd uniswap-deploy-v3 && source ../.env.radius-testnet && npx tsx index.ts --private-key \"$DEPLOYER_KEY\" --json-rpc \"$RPC_URL\" --weth9-address \"0x0000000000000000000000000000000000000000\" --native-currency-label \"ETH\" --owner-address \"$DEPLOYER_ADDRESS\" --gas-price 2 --confirmations 2 --state \"../radius-uniswap-v3-state.json\"'",
-    "deploy-staging": "./deploy-wrapper.sh 'Radius Staging' 'cd uniswap-deploy-v3 && source ../.env.radius-staging && npx tsx index.ts --private-key \"$DEPLOYER_KEY\" --json-rpc \"$RPC_URL\" --weth9-address \"0x0000000000000000000000000000000000000000\" --native-currency-label \"ETH\" --owner-address \"$DEPLOYER_ADDRESS\" --gas-price 2 --confirmations 2 --state \"../radius-staging-uniswap-v3-state.json\"'",
     "deploy-base-sepolia": "./deploy-wrapper.sh 'Base Sepolia' 'cd uniswap-deploy-v3 && source ../.env && npx tsx index.ts --private-key \"$DEPLOYER_KEY\" --json-rpc \"$RPC_URL\" --weth9-address \"$WETH9_ADDRESS\" --native-currency-label \"$NATIVE_CURRENCY_LABEL\" --owner-address \"$DEPLOYER_ADDRESS\" --gas-price 2 --confirmations 2 --state \"../base-sepolia-uniswap-v3-state.json\"'",
     "deploy-anvil": "./deploy-wrapper.sh 'Anvil' 'cd uniswap-deploy-v3 && source ../.env && npx tsx index.ts --private-key \"$DEPLOYER_KEY\" --json-rpc \"$RPC_URL\" --weth9-address \"$WETH9_ADDRESS\" --native-currency-label \"$NATIVE_CURRENCY_LABEL\" --owner-address \"$DEPLOYER_ADDRESS\" --gas-price 20 --confirmations 1 --state \"../anvil-uniswap-v3-state.json\"'",
     "test-deploy-tool": "cd uniswap-deploy-v3 && npx tsx index.ts --help",
-    "test-staging-nonce": "source .env && node docs/test-nonce-bug-staging.js",
     "test-nonce": "source .env && node docs/test-nonce-bug.js",
     "verify-deployment": "source .env && node -e \"const { ethers } = require('ethers'); const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL); const factoryAbi = ['function owner() view returns (address)']; const factory = new ethers.Contract(process.env.FACTORY_ADDRESS, factoryAbi, provider); factory.owner().then(owner => { console.log('✅ Factory Owner:', owner); console.log('🎉 Deployment verified successfully!'); }).catch(err => console.error('❌ Verification failed:', err.message));\"",
     "update-env": "node update-env.js"
