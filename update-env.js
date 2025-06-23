@@ -15,23 +15,30 @@ function detectNetwork() {
   if (envContent.includes('Anvil Local')) {
     return {
       name: 'Anvil',
-      stateFile: 'anvil-uniswap-v3-state.json',
+      stateFile: 'uniswap-v3-deployment-state.json',
       envFile: '.env.anvil'
     };
   } else if (envContent.includes('Base Sepolia')) {
     return {
       name: 'Base Sepolia',
-      stateFile: 'base-sepolia-uniswap-v3-state.json',
-      envFile: '.env.base.sepolia'
+      stateFile: 'uniswap-v3-deployment-state.json',
+      envFile: '.env.base-sepolia'
     };
-  } else if (envContent.includes('Radius')) {
+  } else if (envContent.includes('Radius Testnet')) {
     return {
-      name: 'Radius',
-      stateFile: 'radius-uniswap-v3-state.json',
-      envFile: '.env.radius'
+      name: 'Radius Testnet',
+      stateFile: 'uniswap-v3-deployment-state.json',
+      envFile: '.env.radius-testnet'
+    };
+  } else if (envContent.includes('Radius Staging')) {
+    return {
+      name: 'Radius Staging',
+      stateFile: 'uniswap-v3-deployment-state.json',
+      envFile: '.env.radius-staging'
     };
   } else {
     console.error('❌ Error: Could not detect network from .env file');
+    console.error('File content:', envContent.substring(0, 200) + '...');
     process.exit(1);
   }
 }
