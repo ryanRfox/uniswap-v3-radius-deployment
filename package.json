@@ -19,7 +19,8 @@
     "deploy-base-sepolia": "cd uniswap-deploy-v3 && source ../.env && npx tsx index.ts --private-key \"$DEPLOYER_KEY\" --json-rpc \"$RPC_URL\" --weth9-address \"$WETH9_ADDRESS\" --native-currency-label \"$NATIVE_CURRENCY_LABEL\" --owner-address \"$DEPLOYER_ADDRESS\" --gas-price 2 --confirmations 2 --state \"../base-sepolia-uniswap-v3-state.json\"",
     "deploy-anvil": "cd uniswap-deploy-v3 && source ../.env && npx tsx index.ts --private-key \"$DEPLOYER_KEY\" --json-rpc \"$RPC_URL\" --weth9-address \"$WETH9_ADDRESS\" --native-currency-label \"$NATIVE_CURRENCY_LABEL\" --owner-address \"$DEPLOYER_ADDRESS\" --gas-price 20 --confirmations 1 --state \"../anvil-uniswap-v3-state.json\"",
     "test-deploy-tool": "cd uniswap-deploy-v3 && npx tsx index.ts --help",
-    "update-env": "node update-env.js"
+    "update-env": "node update-env.js",
+    "cleanup": "./cleanup.sh"
   },
   "dependencies": {
     "ethers": "^5.7.2"

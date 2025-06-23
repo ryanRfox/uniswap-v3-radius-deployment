@@ -128,6 +128,14 @@ npm run deploy           # Deploy all 14 Uniswap V3 contracts
 npm run update-env       # Update .env with deployed addresses
 ```
 
+### 4. Archive Deployment (Optional)
+
+```bash
+npm run cleanup          # Archive deployment to /deployments folder
+```
+
+This moves deployment files to timestamped folders in `/deployments` and cleans temporary files for a fresh repository state.
+
 ## Available Scripts
 
 | Script                             | Description                                |
@@ -140,6 +148,7 @@ npm run update-env       # Update .env with deployed addresses
 | `npm run check-balance`            | Check wallet balance                       |
 | `npm run deploy`                   | Deploy all contracts                       |
 | `npm run update-env`               | Update environment with deployed addresses |
+| `npm run cleanup`                  | Archive deployment and clean repository    |
 | `npm run verify-deployment`        | Test deployed contracts                    |
 
 ## Deployed Contracts
@@ -151,6 +160,31 @@ After successful deployment, you'll have all 14 Uniswap V3 contracts:
 - **NonfungiblePositionManager** - NFT position management
 - **QuoterV2** - Price quotation
 - **And 10 additional supporting contracts**
+
+## Deployment Management
+
+### Archive Deployments
+
+After deploying, you can archive your deployment for future reference:
+
+```bash
+npm run cleanup
+```
+
+This creates a timestamped folder in `/deployments` containing:
+
+- **Deployment state files** - Contract addresses and deployment info
+- **Environment configuration** - The `.env.<network>` file used for deployment
+- **Deployment summary** - Complete deployment context and metadata
+
+The script also removes temporary files (`node_modules/`, `package-lock.json`, etc.) to return the repository to a clean state for the next deployment.
+
+### View Deployment History
+
+```bash
+ls deployments/           # See all archived deployments
+cat deployments/*/deployment-info.txt    # View deployment summaries
+```
 
 ## Troubleshooting
 

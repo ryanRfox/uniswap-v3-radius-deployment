@@ -1,0 +1,16 @@
+Deployment Information
+=====================
+Date: Mon Jun 23 15:04:31 EDT 2025
+Branch: master
+Working Directory: /Users/fox/GitHub/other/uniswap-v3-radius-deployment
+Git Commit: c2e9e7c4e511aff0f306233a275da3936a403dd9
+Git Status: 3 files modified
+
+Files in this deployment:
+total 16
+drwxr-xr-x@ 5 fox  staff  160 Jun 23 15:04 .
+drwxr-xr-x@ 3 fox  staff   96 Jun 23 15:04 ..
+-rw-r--r--@ 1 fox  staff  994 Jun 23 15:04 .env.radius-staging
+-rw-r--r--@ 1 fox  staff  845 Jun 23 14:29 uniswap-v3-deployment-state.json
+
+Network environment file: .env.radius-staging
