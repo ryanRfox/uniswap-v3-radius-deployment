@@ -22,13 +22,19 @@ function detectNetwork() {
     return {
       name: 'Base Sepolia',
       stateFile: 'base-sepolia-uniswap-v3-state.json',
-      envFile: '.env.base.sepolia'
+      envFile: '.env.base-sepolia'
+    };
+  } else if (envContent.includes('Radius Staging')) {
+    return {
+      name: 'Radius Staging',
+      stateFile: 'radius-staging-uniswap-v3-state.json',
+      envFile: '.env.radius-staging'
     };
   } else if (envContent.includes('Radius')) {
     return {
-      name: 'Radius',
+      name: 'Radius Testnet',
       stateFile: 'radius-uniswap-v3-state.json',
-      envFile: '.env.radius'
+      envFile: '.env.radius-testnet'
     };
   } else {
     console.error('❌ Error: Could not detect network from .env file');
@@ -38,10 +44,12 @@ function detectNetwork() {
 
 const network = detectNetwork();
 const STATE_FILE = network.stateFile;
-const ENV_FILE = network.envFile;
+const WORKING_ENV_FILE = '.env'; // Always update the working .env file
 
 function main() {
-  console.log(`🔄 Updating ${ENV_FILE} with deployed contract addresses...`);
+  console.log(`🔄 Updating working environment (.env) with deployed contract addresses...`);
+  console.log(`📁 Detected network: ${network.name}`);
+  console.log(`📄 Using state file: ${STATE_FILE}`);
 
   // Check if state file exists
   if (!fs.existsSync(STATE_FILE)) {
@@ -50,9 +58,10 @@ function main() {
     process.exit(1);
   }
 
-  // Check if env file exists
-  if (!fs.existsSync(ENV_FILE)) {
-    console.error('❌ Error: Environment file not found:', ENV_FILE);
+  // Check if working env file exists
+  if (!fs.existsSync(WORKING_ENV_FILE)) {
+    console.error('❌ Error: Working environment file (.env) not found');
+    console.error('   Please switch to a network first: npm run switch-to-<network>');
     process.exit(1);
   }
 
@@ -61,8 +70,8 @@ function main() {
     const stateContent = fs.readFileSync(STATE_FILE, 'utf8');
     const state = JSON.parse(stateContent);
 
-    // Read current env file
-    const envContent = fs.readFileSync(ENV_FILE, 'utf8');
+    // Read current working env file
+    const envContent = fs.readFileSync(WORKING_ENV_FILE, 'utf8');
 
     // Create mapping of deployment state to env variables
     const updates = {};
@@ -120,18 +129,53 @@ function main() {
       }
     }
 
-    // Write updated content back to file
+    // Write updated content back to working env file
     if (updatesApplied > 0) {
-      fs.writeFileSync(ENV_FILE, updatedContent);
-      console.log(`\n🎉 Successfully updated ${updatesApplied} contract addresses in ${ENV_FILE}`);
+      fs.writeFileSync(WORKING_ENV_FILE, updatedContent);
+      console.log(`\n🎉 Successfully updated ${updatesApplied} contract addresses in working environment`);
       console.log('\n📋 Updated addresses:');
       Object.entries(updates).forEach(([key, value]) => {
         console.log(`   ${key}: ${value}`);
       });
-      console.log('\n💡 You can now source the updated environment file:');
-      console.log(`   source ${ENV_FILE}`);
+      console.log('\n============================================================');
+      console.log('📋 NEXT STEPS:');
+      console.log('============================================================');
+      console.log('');
+      console.log('1️⃣  Load the updated environment:');
+      console.log('    source .env');
+      console.log('');
+      console.log('2️⃣  Verify deployment is working:');
+      console.log('    npm run verify-deployment');
+      console.log('');
+      console.log('3️⃣  Test factory functionality:');
+      console.log('    node -e "');
+      console.log('      const { ethers } = require(\'ethers\');');
+      console.log('      const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);');
+      console.log('      const factoryAbi = [\'function owner() view returns (address)\'];');
+      console.log('      const factory = new ethers.Contract(process.env.FACTORY_ADDRESS, factoryAbi, provider);');
+      console.log('      factory.owner().then(owner => console.log(\'Factory Owner:\', owner));');
+      console.log('    "');
+      console.log('');
+      console.log('💡 Environment is now ready for Uniswap V3 interactions!');
+      console.log('📝 Note: Template files remain unchanged for future use');
+      console.log('');
     } else {
       console.log('ℹ️  No updates were needed - all addresses are already set.');
+      console.log('');
+      console.log('============================================================');
+      console.log('📋 NEXT STEPS:');
+      console.log('============================================================');
+      console.log('');
+      console.log('💡 Your environment is already configured! You can:');
+      console.log('');
+      console.log('1️⃣  Load the environment:');
+      console.log('    source .env');
+      console.log('');
+      console.log('2️⃣  Verify deployment is working:');
+      console.log('    npm run verify-deployment');
+      console.log('');
+      console.log('3️⃣  Start building with Uniswap V3!');
+      console.log('');
     }
 
   } catch (error) {

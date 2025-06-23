@@ -3,7 +3,7 @@
 echo "🔄 Switching to Radius Network configuration..."
 
 # Copy Radius environment file to active location
-cp .env.radius .env
+cp .env.radius-testnet .env
 
 # Use the modified Uniswap code (with nonce fixes)
 if [ -d "uniswap-deploy-v3" ]; then
@@ -22,9 +22,25 @@ fi
 
 echo "✅ Switched to Radius Network"
 echo "📋 Active configuration:"
-echo "   • Environment: .env (from .env.radius)"
+echo "   • Environment: .env (from .env.radius-testnet)"
 echo "   • Deploy tool: uniswap-deploy-v3 (modified with nonce fixes)"
 echo "   • State file: radius-uniswap-v3-state.json"
 echo ""
-echo "🚀 Ready to deploy to Radius with:"
-echo "   npm run deploy" 
+echo "============================================================"
+echo "📋 NEXT STEPS:"
+echo "============================================================"
+echo ""
+echo "1️⃣  Check your Radius testnet balance:"
+echo "    npm run check-balance"
+echo ""
+echo "2️⃣  If balance is low, get Radius testnet ETH:"
+echo "    📱 Visit: https://testnet.tryradi.us/dashboard/faucet"
+echo ""
+echo "3️⃣  Test network connectivity:"
+echo "    npm run test-nonce"
+echo ""
+echo "4️⃣  Deploy Uniswap V3 contracts:"
+echo "    npm run deploy"
+echo ""
+echo "⚠️  NOTE: Uses workarounds for Radius nonce validation issues"
+echo "" 

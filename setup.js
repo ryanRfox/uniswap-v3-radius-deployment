@@ -38,9 +38,19 @@ function main() {
   runCommand('npm install', targetPath);
   
   console.log('\n🎉 Setup completed successfully!');
-  console.log('\nNext steps:');
-  console.log('  npm run check-balance  # Check your account balance');
-  console.log('  npm run deploy         # Deploy Uniswap V3');
+  console.log('\n' + '='.repeat(60));
+  console.log('📋 NEXT STEPS:');
+  console.log('='.repeat(60));
+  console.log('');
+  console.log('1️⃣  Choose your target network:');
+  console.log('    npm run switch-to-anvil          # Local development');
+  console.log('    npm run switch-to-base-sepolia   # Base Sepolia testnet');
+      console.log('    npm run switch-to-radius-testnet # Radius testnet');
+  console.log('    npm run switch-to-radius-staging # Radius staging (if available)');
+  console.log('');
+  console.log('💡 RECOMMENDED: Start with Anvil for fast local testing:');
+  console.log('    npm run switch-to-anvil');
+  console.log('');
 }
 
 if (require.main === module) {

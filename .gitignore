@@ -1,22 +1,25 @@
-# Environment files (keep private keys secure)
-.env*
-!.env.radius
-!.env.base.sepolia
+# Private configurations and deployment data
+private/
+.env
+.env.*
 !.env.anvil
 
-# Deployment state files
+# Deployment state files  
+*-uniswap-v3-state.json
 *state.json
 
-# Backup files
-*.backup
-*.bak
-*~
+# Cloned deployment tools (created by scripts)
+uniswap-deploy-v3/
+uniswap-deploy-v3.backup/
+*.backup/
 
-# Logs
-*.log
+# Node.js
+node_modules/
+package-lock.json
 
-# OS files
+# OS and IDE files
 .DS_Store
+.tool-versions
 Thumbs.db
 .vscode/
 .idea/
