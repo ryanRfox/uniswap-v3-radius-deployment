@@ -3,6 +3,8 @@ private/
 .env
 .env.*
 !.env.anvil
+!.env.base-sepolia.example
+!.env.radius-testnet.example
 
 # Deployment state files  
 *-uniswap-v3-state.json
